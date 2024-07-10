@@ -1,0 +1,74 @@
+{
+  blueprints: {
+    models: {
+      path: '',
+      string_cast_type: 'camelCase',
+      models: [
+        {
+          name: 'ModelRef',
+          path: '',
+          string_cast_type: 'camelCase',
+          fields: [
+            {
+              name: 'doc',
+              type: 'String',
+              required: false
+            },
+            {
+              name: 'collection',
+              type: 'List<String>',
+              required: false
+            }
+          ]
+        },
+        {
+          name: 'Model',
+          fields: [
+            {
+              name: 'id',
+              type: 'String',
+              primary: true,
+              required: false
+            },
+            {
+              name: 'ref',
+              type: 'ModelRef',
+              required: false
+            }
+          ]
+        },
+        {
+          name: 'ModelQueryable',
+          fields: [
+            {
+              name: 'value',
+              type: 'String',
+              required: true
+            },
+            {
+              name: 'queryableValue',
+              type: 'Queryable-String',
+              required: true
+            }
+          ]
+        },
+        {
+          name: 'ModelUser',
+          implements: 'Model',
+          fields: [
+            {
+              name: 'displayName',
+              type: 'ModelQueryable',
+              required: true
+            },
+            {
+              name: 'email',
+              type: 'ModelQueryable',
+              nullable: true
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
